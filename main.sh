@@ -4,7 +4,7 @@ if [[ $# -eq 1 ]]
 then
     if [[ "$1" == "run" ]]
     then
-        python src/main.py;
+        python ./main.py;
     elif [[ "$1" == "test" ]]
     then
         python -m unittest discover -s ./tests;

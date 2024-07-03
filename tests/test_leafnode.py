@@ -4,16 +4,16 @@ from src.LeafNode import LeafNode
 class TestLeafNode(unittest.TestCase):
     def test_html_attributes(self):
         # No attribute, no tag
-        node = LeafNode(value="Lorem ipsum sit dolor amet")
+        node = LeafNode("Lorem ipsum sit dolor amet")
         self.assertEqual(node.to_html(), "Lorem ipsum sit dolor amet")
 
         # No attribute
-        node = LeafNode(value="Lorem ipsum sit dolor amet", tag="p")
+        node = LeafNode("Lorem ipsum sit dolor amet", tag="p")
         self.assertEqual(node.to_html(), "<p> Lorem ipsum sit dolor amet </p>")
 
         # 1 attribute
         node = LeafNode(
-            value="Google it!", 
+            "Google it!", 
             tag="a",
             attributes= {
                 "href": "www.google.com",
@@ -26,7 +26,7 @@ class TestLeafNode(unittest.TestCase):
 
         # n attributes, n > 1
         node = LeafNode(
-            value="Google it!", 
+            "Google it!", 
             tag="a",
             attributes= {
                 "href": "www.google.com",
