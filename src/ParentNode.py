@@ -14,9 +14,6 @@ class ParentNode(HTMLNode):
         if is_invalid_children:
             raise ValueError("Children should be a list with at least one child")
 
-        children_html = []
-        for child in self._children:
-            children_html.append(f"{child.to_html()}")
-
+        children_html = list(map(lambda child: child.to_html(), self._children))
         innerHTML = " ".join(children_html)
         return f"<{self._tag}{self.attributes_to_html()}> {innerHTML} </{self._tag}>"
