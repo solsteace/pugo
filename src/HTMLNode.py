@@ -20,7 +20,7 @@ class HTMLNode:
         return "".join(mapped_attributes)
 
     def __repr__(self):
-        tag_repr = ( "*raw text*" if self._tag == None 
+        tag_repr = ( "raw text" if self._tag == None 
                     else self._tag)
 
         value_repr = ( "-" if self._value == None 
@@ -38,7 +38,7 @@ class HTMLNode:
 
         return "\n".join([
             f"HTMLNode({tag_repr})",
-            f"value: {value_repr}",
+            f"value: '{value_repr}'",
             f"children: {children_repr}",
             f"attributes: {attributes_repr}",
         ])

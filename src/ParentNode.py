@@ -6,10 +6,10 @@ class ParentNode(HTMLNode):
         super().__init__(tag, children=children, attributes=attributes)
 
     def to_html(self):
-        if not(isinstance(self._tag, str)):
+        if type(self._tag) != str:
             raise ValueError("Invalid tag has been given")
 
-        is_invalid_children = ( not(isinstance(self._children, list))
+        is_invalid_children = ( type(self._children) !=  list
                                 or len(self._children) == 0)
         if is_invalid_children:
             raise ValueError("Children should be a list with at least one child")

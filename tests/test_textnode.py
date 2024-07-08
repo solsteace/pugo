@@ -1,5 +1,5 @@
 import unittest
-from src.TextNode import TextNode, text_node_to_leaf_node
+from src.TextNode import TextNode
 
 class TestTextNode(unittest.TestCase):
     def test_equality(self):
@@ -13,10 +13,10 @@ class TestTextNode(unittest.TestCase):
         self.assertNotEqual(node, node2)
 
     def test_text_to_LeafNode(self):
-        plain_text = text_node_to_leaf_node(TextNode("Plain text", "text"))
-        bold_text = text_node_to_leaf_node(TextNode("Bold text", "bold"))
-        italic_text = text_node_to_leaf_node(TextNode("Italic text", "italic"))
-        code_block = text_node_to_leaf_node(TextNode("js\nconsole.log(1 == '1')", "code"))
+        plain_text = TextNode("Plain text", "text").to_leaf_node()
+        bold_text = TextNode("Bold text", "bold").to_leaf_node()
+        italic_text = TextNode("Italic text", "italic").to_leaf_node()
+        code_block = TextNode("js\nconsole.log(1 == '1')", "code").to_leaf_node()
 
         self.assertEqual(plain_text.to_html(), "Plain text")
         self.assertEqual(bold_text.to_html(), "<b> Bold text </b>")
@@ -24,18 +24,16 @@ class TestTextNode(unittest.TestCase):
         self.assertEqual(code_block.to_html(), "<code> js\nconsole.log(1 == '1') </code>")
 
     def test_link_to_LeafNode(self):
-        link_text = text_node_to_leaf_node(
-            TextNode("Chat with Bonzi Buddy today!", "link", "bonzibuddy.tk")
-        )
+        link_text = (TextNode("Chat with Bonzi Buddy today!", "link", "bonzibuddy.tk")
+                        .to_leaf_node())
         self.assertEqual( 
             link_text.to_html(),
             '<a href="bonzibuddy.tk"> Chat with Bonzi Buddy today! </a>'
         )
 
     def test_image_to_LeafNode(self):
-        image_text = text_node_to_leaf_node(
-            TextNode(None, "image", "https://i.kym-cdn.com/entries/icons/original/000/039/393/cover2.jpg")
-        )
+        image_text = (TextNode(None, "image", "https://i.kym-cdn.com/entries/icons/original/000/039/393/cover2.jpg")
+                        .to_leaf_node())
         self.assertEqual( 
             image_text.to_html(), 
             '<img src="https://i.kym-cdn.com/entries/icons/original/000/039/393/cover2.jpg">  </img>'

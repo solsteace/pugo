@@ -29,39 +29,23 @@ class TextNode:
     def __repr__(self):
         return f"TextNode({self.__text}, {self.__type}, {self.__url})"
 
-def text_node_to_leaf_node(text_node):
-    supported_types = TEXT_NODE_TYPES.keys()
-    text_type = text_node.get_type()
-    if not(text_type in supported_types):
-        raise ValueError(f"Unknown text type. Use one of the following instead\n [{", ".join(supported_types)}]")
+    def to_leaf_node(self):
+        supported_types = TEXT_NODE_TYPES.keys()
+        text_type = self.get_type()
+        node_url = self.get_url()
+        node_value = self.get_value()
 
-    node_url = text_node.get_url()
-    node_value = text_node.get_value()
-    if text_node.get_type() == "image":
-        if not(isinstance(node_url, str)):
+        if not(text_type in supported_types):
+            raise ValueError(f"Unknown text type. Use one of the following instead\n [{", ".join(supported_types)}]")
+
+        if type(node_url) != str:
             raise ValueError(f"url should be a string containing a url")
 
-        return LeafNode(
-            "",
-            TEXT_NODE_TYPES["image"],
-            { "src": node_url }
-        )
+        if self.get_type() == "image":
+            return LeafNode( "", TEXT_NODE_TYPES["image"], { "src": node_url })
+        elif text_type == "link":
+            if (type(node_value) != str) and (len(node_value) < 1):
+                raise ValueError(f"anchor text should at least be a single character")
+            return LeafNode( node_value, TEXT_NODE_TYPES["link"], { "href": node_url })
 
-    if text_type == "link":
-        if not(isinstance(node_url, str)):
-            raise ValueError(f"url should be a string containing a url")
-        
-        is_invalid_anchor_text = (
-            not(isinstance(node_url, str))
-            and len(node_url) < 1
-        )
-        if is_invalid_anchor_text:
-            raise ValueError(f"anchor text should at least be a single character")
-
-        return LeafNode(
-            node_value,
-            TEXT_NODE_TYPES["link"],
-            { "href": text_node.get_url()}
-        )
-
-    return LeafNode(node_value, TEXT_NODE_TYPES[text_type])
+        return LeafNode(node_value, TEXT_NODE_TYPES[text_type])
