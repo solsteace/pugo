@@ -27,12 +27,12 @@ class HTMLNode:
                         else self._value)
 
         children_repr = (
-            "-" if self._children == None 
+            "-" if len(self._children) == 0 
             else "\n" + "\n".join([f"\tHTMLNode({child.__tag})" for child in self._children])
         )
 
         attributes_repr = (
-            "-" if self._attributes == None 
+            "-" if len(self._attributes.keys()) == 0
             else "\n" + "\n".join([f"\t{key}: {value}" for (key, value) in self._attributes])
         )
 
