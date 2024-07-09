@@ -16,4 +16,8 @@ class ParentNode(HTMLNode):
 
         children_html = list(map(lambda child: child.to_html(), self._children))
         innerHTML = " ".join(children_html)
-        return f"<{self._tag}{self.attributes_to_html()}> {innerHTML} </{self._tag}>"
+
+        if(self._tag != "pre"): # Band aid solution, fix this later
+            return f"<{self._tag}{self.attributes_to_html()}> {innerHTML} </{self._tag}>"
+        return f"<{self._tag}{self.attributes_to_html()}>{innerHTML}</{self._tag}>"
+
