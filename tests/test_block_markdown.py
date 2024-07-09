@@ -114,6 +114,8 @@ class TestBlockMarkdown(unittest.TestCase):
             * with **items**
 
             > Lorem ipsum sit dolor amet asjklasja asd adas
+            > Lorem ipsum sit dolor amet asjklasja asd adas
+            > Lorem ipsum sit dolor amet asjklasja asd adas
 
             ```
             Lorem 
@@ -128,7 +130,7 @@ class TestBlockMarkdown(unittest.TestCase):
             "<div> This is  <b> bolded </b>  paragraph </div>",
             "<div> This is another paragraph with  <i> italic </i>  text and  <code> code </code>  here This is the same paragraph on a new line </div>",
             "<div> <ul> <li> <i> This </i>  is a list </li> <li> with  <b> items </b> </li> </ul> </div>",
-            "<div> <blockquote> Lorem ipsum sit dolor amet asjklasja asd adas </blockquote> </div>",
+            "<div> <blockquote> Lorem ipsum sit dolor amet asjklasja asd adas Lorem ipsum sit dolor amet asjklasja asd adas Lorem ipsum sit dolor amet asjklasja asd adas </blockquote> </div>",
             "<div> <pre><code> Lorem\nipsum\nsit\ndolor\namet </code></pre> </div>",
         ]
 

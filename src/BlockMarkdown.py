@@ -95,7 +95,8 @@ def handle_block_code(blocks):
     return ParentNode( [ ParentNode([children], "code") ], "pre")
 
 def handle_block_quote(blocks):
-    quote = " ".join(blocks)[2:]
+    block_quote_contents = [block[2:] for block in blocks]
+    quote = " ".join(block_quote_contents)
     return ParentNode( [ LeafNode(quote) ], "blockquote")
 
 def handle_unordered_list(blocks):
