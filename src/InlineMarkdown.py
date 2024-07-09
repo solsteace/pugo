@@ -61,4 +61,6 @@ def split_links_on_nodes(nodes):
                     buffer = []
                     break
 
+        if len(buffer) > 0:
+            splitted_nodes.append(TextNode(" ".join(buffer), "text"))
     return splitted_nodes

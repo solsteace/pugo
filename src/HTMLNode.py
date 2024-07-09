@@ -28,7 +28,7 @@ class HTMLNode:
 
         children_repr = (
             "-" if len(self._children) == 0 
-            else "\n" + "\n".join([f"\tHTMLNode({child.__tag})" for child in self._children])
+            else "\n" + "\n".join([f"\tHTMLNode({child._tag})" for child in self._children])
         )
 
         attributes_repr = (
