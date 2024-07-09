@@ -4,10 +4,12 @@ from src.ParentNode import ParentNode
 
 class TestLeafNode(unittest.TestCase):
     def test_to_html_single_child(self):
+        _ = "It should correctly handle a single child"
         parent = ParentNode([LeafNode("Hell World", tag="p")], tag="div")
         self.assertEqual(parent.to_html(), '<div> <p> Hell World </p> </div>')
 
     def test_to_html_n_child(self):
+        _ = "It should handle child with various tag and attributes",
         parent = ParentNode(
             [ 
                 LeafNode("Lorem ipsum", tag="p"), 
@@ -35,6 +37,7 @@ class TestLeafNode(unittest.TestCase):
         )
 
     def test_to_html_nesting(self):
+        _ = "It should handle nested child with various tag and attributes",
         parentl2 = ParentNode(
             [
                 LeafNode("Insert text", tag="p"),
