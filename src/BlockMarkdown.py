@@ -56,7 +56,7 @@ def markdown_to_html(markdown):
         block = blocks[idx]
         block_type = block_types[idx]
         if block_type == "paragraph": 
-            children.extend(handle_paragraph(block))
+            children.append(handle_paragraph(block))
         elif block_type == "block_code":
             children.append(handle_block_code(block))
         elif block_type == "block_quote":
@@ -79,8 +79,10 @@ def handle_paragraph(blocks):
             ), '*'
         ), '`'
     )
-    return [content.to_leaf_node() for content in paragraph_contents]
-
+    return ParentNode(
+        [content.to_leaf_node() for content in paragraph_contents],
+        "p"
+    )
 
 def handle_heading(blocks, block_type):
     heading_level = int(block_type[-1])
