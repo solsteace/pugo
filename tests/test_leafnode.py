@@ -18,7 +18,7 @@ class TestLeafNode(unittest.TestCase):
                     ("Lorem ipsum sit dolor amet", ), 
                     {"tag": "p"}
                 ),
-                "<p> Lorem ipsum sit dolor amet </p>"
+                "<p>Lorem ipsum sit dolor amet</p>"
             ),
             (
                 "It should be able to return html given an attribute and a tag",
@@ -29,7 +29,7 @@ class TestLeafNode(unittest.TestCase):
                         "attributes": {"href": "www.google.com"}
                     }
                 ),
-                '<a href="www.google.com"> Google it! </a>'
+                '<a href="www.google.com">Google it!</a>'
             ),
             (
                 "It should be ablt to return html given a tag and multiple attributes",
@@ -43,7 +43,7 @@ class TestLeafNode(unittest.TestCase):
                         }
                     }
                 ),
-                '<a href="www.google.com" target="_blank"> Google it! </a>'
+                '<a href="www.google.com" target="_blank">Google it!</a>'
             ),
         ]
 

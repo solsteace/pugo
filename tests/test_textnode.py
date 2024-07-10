@@ -24,16 +24,16 @@ class TestTextNode(unittest.TestCase):
             (
                 "It should handle `bold` text conversion to `LeafNode` and correctly display its html representation",
                 ("Bold text", "bold"), 
-                "<b> Bold text </b>" 
+                "<b>Bold text</b>" 
             ),
             (
                 "It should handle `italic` text conversion to `LeafNode` and correctly display its html representation",
                 ("Italic text", "italic"), 
-                "<i> Italic text </i>"),
+                "<i>Italic text</i>"),
             (
                 "It should handle `code` text conversion to `LeafNode` and correctly display its html representation",
                 ("console.log(1 == '1')", "code"), 
-                "<code> console.log(1 == '1') </code>"
+                "<code>console.log(1 == '1')</code>"
             )
         ]
 
@@ -48,7 +48,7 @@ class TestTextNode(unittest.TestCase):
                         .to_leaf_node())
         self.assertEqual( 
             link_text.to_html(),
-            '<a href="bonzibuddy.tk"> Chat with Bonzi Buddy today! </a>'
+            '<a href="bonzibuddy.tk">Chat with Bonzi Buddy today!</a>'
         )
 
     def test_image_to_LeafNode(self):
@@ -57,7 +57,7 @@ class TestTextNode(unittest.TestCase):
                         .to_leaf_node())
         self.assertEqual( 
             image_text.to_html(), 
-            '<img src="https://i.kym-cdn.com/entries/icons/original/000/039/393/cover2.jpg">  </img>'
+            '<img src="https://i.kym-cdn.com/entries/icons/original/000/039/393/cover2.jpg"></img>'
         )
 
 if __name__ == "__main__":

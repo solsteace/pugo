@@ -8,5 +8,5 @@ class LeafNode(HTMLNode):
         if self._value == None:
             raise ValueError("LeafNode has no value")
         return (self._value if self._tag == None
-                else f"<{self._tag}{self.attributes_to_html()}> {self._value} </{self._tag}>"
+                else f"<{self._tag}{self.attributes_to_html()}>{self._value}</{self._tag}>"
         )
