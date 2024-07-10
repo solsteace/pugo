@@ -20,17 +20,12 @@ class HTMLNode:
         return "".join(mapped_attributes)
 
     def __repr__(self):
-        tag_repr = ( "raw text" if self._tag == None 
-                    else self._tag)
-
-        value_repr = ( "-" if self._value == None 
-                        else self._value)
-
+        tag_repr = ( "raw text" if self._tag is None else self._tag)
+        value_repr = ( "-" if self._value is None else self._value)
         children_repr = (
             "-" if len(self._children) == 0 
             else "\n" + "\n".join([f"\tHTMLNode({child._tag})" for child in self._children])
         )
-
         attributes_repr = (
             "-" if len(self._attributes.keys()) == 0
             else "\n" + "\n".join([f"\t{key}: {value}" for (key, value) in self._attributes])

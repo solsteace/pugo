@@ -5,8 +5,8 @@ class LeafNode(HTMLNode):
         super().__init__(tag, value, attributes=attributes)
 
     def to_html(self):
-        if self._value == None:
+        if self._value is None:
             raise ValueError("LeafNode has no value")
-        return (self._value if self._tag == None
+        return (self._value if self._tag is None
                 else f"<{self._tag}{self.attributes_to_html()}>{self._value}</{self._tag}>"
         )
