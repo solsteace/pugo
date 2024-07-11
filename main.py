@@ -96,5 +96,8 @@ def generate_from_directory(base_directory, template_path, current_path=""):
 if __name__ == "__main__":
     if not(path.exists(DESTINATION_BASE)):
         mkdir(DESTINATION_BASE)
-    copy_static_files("static")
-    generate_from_directory( "content", path.join("content", "template.html"))
+    try:
+        copy_static_files("static")
+        generate_from_directory( "content", path.join("content", "template.html"))
+    except ValueError as e:
+        print(f"=== Exception raised! Check the following info to learn more ===\n{e}")
